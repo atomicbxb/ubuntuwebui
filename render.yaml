@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: ubuntu-web-terminal
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: WEB_USERNAME
+        value: admin
+      - key: WEB_PASSWORD
+        value: admin123
+      - key: SESSION_SECRET
+        generateValue: true
+    healthCheckPath: /login
+    autoDeploy: true
+    region: oregon
