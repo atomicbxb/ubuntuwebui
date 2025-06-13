@@ -285,9 +285,10 @@ app.get('/terminal', requireAuth, (req, res) => {
                     }, 1000);
                 });
                 
-                socket.on('terminal-output', (data) => {
-                    terminal.write(data);
-                });
+socket.on('terminal-output', (data) => {
+    terminal.write(data);
+    terminal.scrollToBottom();
+});
                 
                 terminal.onData((data) => {
                     socket.emit('terminal-input', data);
